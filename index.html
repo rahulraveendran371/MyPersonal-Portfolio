@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Raveendran — MERN Stack Developer</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10151c;
+    --panel:#161d27;
+    --panel-2:#1c2530;
+    --line:#2a3441;
+    --paper:#e9edf2;
+    --muted:#8896a6;
+    --amber:#f2b84b;
+    --teal:#36b6a8;
+    --rose:#e8765a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  ::selection{background:var(--amber);color:#10151c;}
+  .accent-amber{color:var(--amber);}
+  .accent-teal{color:var(--teal);}
+  .accent-rose{color:var(--rose);}
+  .bg-panel{background:var(--panel);}
+  .bg-panel2{background:var(--panel-2);}
+  .border-line{border-color:var(--line)!important;}
+  .text-muted-c{color:var(--muted);}
+  .section{padding:5rem 0;border-top:1px solid var(--line);}
+
+  .navbar-custom{background:#10151cee!important;backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  .nav-link-custom{color:var(--muted)!important;font-family:'JetBrains Mono',monospace;font-size:.9rem;position:relative;transition:color .2s ease;}
+  .nav-link-custom:hover{color:var(--paper)!important;}
+  .nav-link-custom::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--amber);transition:width .25s ease;}
+  .nav-link-custom:hover::after{width:100%;}
+
+  .btn-amber{background:var(--amber);color:#10151c;font-weight:700;font-family:'JetBrains Mono',monospace;font-size:.9rem;border:none;transition:transform .2s ease, box-shadow .2s ease;}
+  .btn-amber:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(242,184,75,.45);color:#10151c;}
+  .btn-ghost-c{border:1px solid var(--line);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:.9rem;transition:border-color .2s ease, background .2s ease;}
+  .btn-ghost-c:hover{border-color:var(--teal);background:rgba(54,182,168,.08);color:var(--paper);}
+
+  .terminal-card{background:var(--panel);border:1px solid var(--line);border-radius:.75rem;overflow:hidden;}
+  .terminal-head{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;border-bottom:1px solid var(--line);background:var(--panel-2);}
+  .terminal-bar{display:flex;gap:.4rem;}
+  .dot{width:.6rem;height:.6rem;border-radius:50%;}
+
+  .typewrap{overflow:hidden;border-right:2px solid var(--amber);white-space:nowrap;animation:typing 2.6s steps(28,end) 1, blinkcursor .8s step-end infinite alternate;display:inline-block;}
+  @keyframes typing{from{width:0;}to{width:100%;}}
+  @keyframes blinkcursor{50%{border-color:transparent;}}
+
+  .tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.04em;padding:.2rem .55rem;border-radius:.3rem;border:1px solid var(--line);color:var(--muted);display:inline-block;}
+
+  .card-c{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:.75rem;transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;}
+  .card-c:hover{transform:translateY(-4px);border-color:var(--amber);box-shadow:0 12px 30px -10px rgba(0,0,0,.6);}
+  .card-dashed{border-style:dashed!important;}
+
+  .commit-line{position:relative;padding-left:2.25rem;padding-bottom:2.25rem;}
+  .commit-line::before{content:"";position:absolute;left:.4rem;top:.4rem;width:.65rem;height:.65rem;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(242,184,75,.15);}
+  .commit-line::after{content:"";position:absolute;left:.68rem;top:1.1rem;bottom:0;width:1px;background:var(--line);}
+  .commit-line:last-child::after{display:none;}
+  .commit-line:last-child{padding-bottom:0;}
+
+  .skill-bar-track{background:var(--line);border-radius:50px;height:6px;overflow:hidden;}
+  .skill-bar-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--teal),var(--amber));}
+
+  @media (prefers-reduced-motion: reduce){
+    .typewrap{animation:none;width:100%;border-right:none;}
+    .card-c:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-md fixed-top navbar-custom py-3">
+  <div class="container">
+    <a class="navbar-brand mono fw-bold" href="#top" style="color:var(--paper);">
+      <span class="accent-amber">~/</span>Rahul<span class="text-muted-c"> Raveendran</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" style="border-color:var(--line);">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-md-center gap-md-4">
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">about</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#journey">journey</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#projects">projects</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#skills">skills</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">contact</a></li>
+        <li class="nav-item mt-2 mt-md-0"><a class="btn btn-amber rounded-2 px-3 py-2" href="#contact">Hire me</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="top" class="pt-5 mt-5 pb-5">
+  <div class="container pt-5">
+    <div class="row align-items-center g-5">
+      <div class="col-md-7">
+        <span class="tag accent-teal mb-4 d-inline-block" style="border-color:var(--teal);">open to relocation · remote friendly</span>
+
+        <div class="terminal-card mb-4">
+          <div class="terminal-head">
+            <div class="terminal-bar">
+              <span class="dot" style="background:#e8765a"></span>
+              <span class="dot" style="background:#f2b84b"></span>
+              <span class="dot" style="background:#36b6a8"></span>
+            </div>
+        
+          </div>
+          <div class="p-4 mono">
+            
+            <h1 class="typewrap fw-bold fs-2 fs-md-1 my-2">Rahul Raveendran</h1>
+           
+            <p class="mb-0">MERN Stack Developer <span class="accent-amber">// Fresher</span></p>
+            
+            <p class="mb-0">Wayanad, Kerala <span class="text-muted-c">→</span> Kochi / Bangalore / Hyderabad / Chennai / Remote</p>
+          </div>
+        </div>
+
+        <p class="text-muted-c mb-4 fs-5">I build full-stack web apps with MongoDB, Express, React and Node. Career switcher from sales to software — self-taught, internship-trained, and shipping real projects.</p>
+
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#projects" class="btn btn-amber rounded-2 px-4 py-2">View projects</a>
+          <a href="#contact" class="btn btn-ghost-c rounded-2 px-4 py-2">Get in touch</a>
+        </div>
+      </div>
+
+
+      <div class="col-md-5 d-flex flex-column align-items-center">
+        <div class="text-center mb-3">
+          <img src="c:\Users\rahul\Downloads\IMG_20251021_093106_enhanced (1).jpg" alt="Rahul Raveendran" class="rounded-circle border border-2" style="width:170px; height:170px; object-fit:cover; object-position:50% 25%; border-color:var(--amber)!important;">
+        </div>
+   
+
+      <div class="col-md-5">
+        <div class="card-c p-4">
+          <p class="mono small text-muted-c mb-3">// quick facts</p>
+          <ul class="list-unstyled mb-0">
+            <li class="d-flex gap-3 mb-3">
+              <span class="accent-teal mono">01</span>
+              <span>Currently interning at <strong>Techolas Technologies</strong>, Kochi</span>
+            </li>
+            <li class="d-flex gap-3 mb-3">
+              <span class="accent-teal mono">02</span>
+              <span>Pursuing <strong>BCA via IGNOU</strong> (July 2026 session)</span>
+            </li>
+            <li class="d-flex gap-3 mb-3">
+              <span class="accent-teal mono">03</span>
+              <span>Shipped <strong>SneakPeak</strong> — full-stack e-commerce app, live in production</span>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <p class="mono accent-amber small mb-2">// about</p>
+    <h2 class="fw-bold display-6 mb-5">Building with  <span class="accent-teal">MongoDB, Express, React & Node.</span>.</h2>
+    <div class="row g-5">
+      <div class="col-md-8">
+        I'm a MERN stack developer based in Wayanad, Kerala, currently interning at Techolas Technologies in Kochi while completing my BCA through IGNOU. My journey started with a diploma in Computer Engineering, followed by focused, hands-on MERN training at Bridgeon IT Institute.
+          <br><br>
+          I'm a self-learner at heart — I enjoy breaking down problems, reading documentation, and shipping real, working projects rather than just tutorials. SneakPeak, my flagship e-commerce app, is a good example of that: built end to end, from database schema to deployment. I'm currently looking for my first full-time developer role where I can keep growing.
+      </div>
+      <div class="col-md-4">
+        <div class="card-c p-4">
+          <p class="mono small text-muted-c mb-3">// stack.json</p>
+          <div class="mono small">
+            <p><span class="accent-amber">"frontend"</span>: <span class="text-muted-c">"React, Redux, Bootstrap,Tailwind css,Html,Css"</span></p>
+            <p><span class="accent-amber">"backend"</span>: <span class="text-muted-c">"Node.js, Express.js"</span></p>
+            <p><span class="accent-amber">"database"</span>: <span class="text-muted-c">"MongoDB"</span></p>
+            <p><span class="accent-amber">"auth"</span>: <span class="text-muted-c">"JWT"</span></p>
+            <p><span class="accent-amber">"deploy"</span>: <span class="text-muted-c">"Vercel, Render"</span></p>
+            <p class="mb-0"><span class="accent-amber">"status"</span>: <span class="accent-teal">"learning daily"</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="section">
+  <div class="container">
+    <p class="mono accent-amber small mb-2">// journey</p>
+    <h2 class="fw-bold display-6 mb-5">git log --my-career</h2>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="commit-line">
+          <p class="mono small text-muted-c mb-1">2026 →</p>
+          <h3 class="fw-bold fs-5 mb-1">Interning at Techolas Technologies, Kochi</h3>
+          <p class="text-muted-c">Building and deploying full-stack MERN applications in a real production environment, while completing BCA via IGNOU.</p>
+        </div>
+        <div class="commit-line">
+          <p class="mono small text-muted-c mb-1">2025 →</p>
+          <h3 class="fw-bold fs-5 mb-1">Shipped SneakPeak</h3>
+          <p class="text-muted-c">Designed and built a full-stack sneaker e-commerce platform end to end — from schema to deployment.</p>
+        </div>
+        <div class="commit-line">
+          <p class="mono small text-muted-c mb-1">2024 →</p>
+          <h3 class="fw-bold fs-5 mb-1">MERN Stack training, Bridgeon IT Institute</h3>
+          <p class="text-muted-c">Structured, hands-on training in HTML/CSS/Bootstrap, JavaScript, React, Node.js, Express and MongoDB.</p>
+        </div>
+        <div class="commit-line">
+          <p class="mono small text-muted-c mb-1">Earlier →</p>
+          <h3 class="fw-bold fs-5 mb-1">Diploma in Computer Engineering</h3>
+          <p class="text-muted-c">Government Polytechnic College, Mananthavady — foundation in computing fundamentals.</p>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="container">
+    <p class="mono accent-amber small mb-2">// projects</p>
+    <h2 class="fw-bold display-6 mb-5">Things I've built</h2>
+
+    <div class="row g-4">
+      <div class="col-12">
+        <div class="card-c p-4 p-md-5">
+          <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+            <div>
+              <h3 class="fw-bold fs-2 mb-1">SneakPeak</h3>
+              <p class="text-muted-c mb-0">Full-stack sneaker e-commerce platform</p>
+            </div>
+            <span class="tag accent-amber" style="border-color:var(--amber);">Flagship project</span>
+          </div>
+          <p class="text-muted-c mb-4" style="line-height:1.8;">
+            A production-ready e-commerce app with cart, wishlist, order management and an admin dashboard, backed by 15+ REST API endpoints and secured with JWT authentication. Frontend deployed on Vercel, backend on Render.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="tag">MongoDB</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">React.js</span>
+            <span class="tag">Node.js</span>
+            
+            <span class="tag">JWT Auth</span>
+          </div>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="https://github.com/rahulraveendran371" target="_blank" class="btn btn-ghost-c rounded-2 px-3 py-2">↗ View on GitHub</a>
+            <a href="https://sneakpeak-frontend.vercel.app/" class="btn btn-ghost-c rounded-2 px-3 py-2">↗ Live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card-c p-4 h-100">
+          <h3 class="fw-bold fs-4 mb-1">AyurVanam</h3>
+          <p class="text-muted-c mb-3">Eco-resort landing website</p>
+          <p class="text-muted-c small mb-4" style="line-height:1.7;">
+         A fully responsive eco-resort website built with HTML, CSS and Bootstrap — focused on clean layout, nature-inspired visuals and mobile-friendly design.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Bootstrap-5</span>
+          </div>
+           <div class="d-flex flex-wrap gap-3">
+            <a href="https://github.com/rahulraveendran371" target="_blank" class="btn btn-ghost-c rounded-2 px-3 py-2">↗ View on GitHub</a>
+            <a href="https://sneakpeak-frontend.vercel.app/" class="btn btn-ghost-c rounded-2 px-3 py-2">↗ Live demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card-c card-dashed p-4 h-100">
+          <h3 class="fw-bold fs-4 mb-1 text-muted-c">Next up: ExpenseSplit</h3>
+          <p class="text-muted-c small mb-4" style="line-height:1.7;">
+            A Splitwise-style expense splitting app with a debt-simplification algorithm — currently in planning to round out my project portfolio.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tag">MongoDB</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">React.js</span>
+            <span class="tag">Node.js</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <p class="mono accent-amber small mb-2">// skills</p>
+    <h2 class="fw-bold display-6 mb-5">Toolbelt</h2>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between mono small mb-2"><span>JavaScript (ES6+)</span><span class="text-muted-c">Daily use</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between mono small mb-2"><span>React.js / Redux</span><span class="text-muted-c">Daily use</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:78%"></div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between mono small mb-2"><span>Node.js / Express.js</span><span class="text-muted-c">Daily use</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between mono small mb-2"><span>MongoDB</span><span class="text-muted-c">Comfortable</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between mono small mb-2"><span>HTML / CSS / Bootstrap 5</span><span class="text-muted-c">Strong</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex justify-content-between mono small mb-2"><span>Git & GitHub</span><span class="text-muted-c">Comfortable</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div>
+      </div>
+      
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 mt-5">
+      <span class="tag">REST APIs</span>
+      <span class="tag">JWT Authentication</span>
+      <span class="tag">Vercel</span>
+      <span class="tag">Render</span>
+      <span class="tag">Postman</span>
+      <span class="tag">Responsive Design</span>
+      
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="card-c p-5 text-center mx-auto" style="max-width:700px;">
+      <p class="mono accent-amber small mb-3">// contact</p>
+      <h2 class="fw-bold display-6 mb-3">Let's build something.</h2>
+      <p class="text-muted-c mb-4">I'm actively looking for my first full-time developer role — MERN stack, frontend, or full-stack. Open to relocating anywhere in India, or working remote.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rahulraveendran371@gmail.com&su=Portfolio%20Contact" target="_blank" class="btn btn-amber rounded-2 px-4 py-2">Email me</a>
+        <a href="https://github.com/rahulraveendran371" target="_blank" class="btn btn-ghost-c rounded-2 px-4 py-2">GitHub</a>
+        <a href="https://linkedin.com/in/rahul-raveendranwayanad" class="btn btn-ghost-c rounded-2 px-4 py-2">LinkedIn</a>
+      </div><br>
+      <p>MOb:+919961065804</p>
+    </div>
+  </div>
+</section>
+
+<footer class="text-center py-5 mono small text-muted-c border-top border-line">
+  <p class="mb-0">built by Rahul Raveendran · Wayanad, Kerala · 2026</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
